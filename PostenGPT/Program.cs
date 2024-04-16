@@ -1,4 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+using PostenGPT;
+using PostenGPT.Post;
 
-Console.WriteLine("Hello, World!as Try 2asdasdss");
-Console.WriteLine("HEIUII");
+Package p = new Package("thing", new List<int>(){10,15,5});
+
+Console.WriteLine(p.ToString());
+    
