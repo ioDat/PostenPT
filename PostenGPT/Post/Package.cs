@@ -4,13 +4,13 @@ namespace PostenGPT.Post;
 
 public class Package
 {
-    private string name;
+    public string description;
     private List<int> dimensions;
 
-    public Package(string name, List<int> dimensions)
+    public Package(string description, List<int> dimensions)
     {
-        this.name = name;
-        this.dimensions = dimensions;
+        this.description = description;
+        this.Dimensions = dimensions;
     }
 
     public List<int> Dimensions
@@ -21,11 +21,12 @@ public class Package
             // Sort values after we create a package
             dimensions = value;
             dimensions.Sort();
+            dimensions.Reverse();
         }
     }
 
     public override string ToString()
     {
-        return name + dimensions[0] + " " + dimensions[1] + " " + dimensions[2];
+        return description + " " + dimensions[0] + " " + dimensions[1] + " " + dimensions[2];
     }
 }
