@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text;
+using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using PostenGPT;
 using PostenGPT.Post;
@@ -29,22 +30,44 @@ catch (Exception e)
     Console.WriteLine(e);
 }
 
+StringBuilder shoppingList = new StringBuilder();
+shoppingList.Append("Shopping List \n\n");
 
-Console.WriteLine("Loaded packages");
+//Console.WriteLine("Loaded packages");
 foreach (Package p in pc.packages)
 {
-    Console.WriteLine(p.ToString());
+    //Console.WriteLine(p.ToString());
+    shoppingList.Append("ITEM:" + p.);
+    shoppingList.Append("\n");
+    
     
     // Spec 2: Find the best packing option
     Packing pack = new Packing(p);
-    Console.WriteLine(pack + "\n");
+    shoppingList.Append("Packing Option:" + pack);
+    shoppingList.Append("\n");
+    
+    
+    // Spec 3: Find the best postage option
+    Postage post = new Postage(pack);
+    // Console.WriteLine(post);
+    shoppingList.Append("Postage Option:" + post);
+    shoppingList.Append("\n");
+    
+    
+    // Console.WriteLine(pack + "\n");
+    shoppingList.AppendLine();
 }
 
-// Spec 3: Find the best postage option
+
 
 
 // Spec 4: Output shopping list => file
+StreamWriter sw = new StreamWriter("shoppinglist.txt");
+sw.WriteLine(shoppingList.ToString());
+sw.Close();
 
 
 // Spec 5: Readme and other docs
+
+
 

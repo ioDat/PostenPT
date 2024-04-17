@@ -4,7 +4,7 @@ namespace PostenGPT.Post;
 
 public class Package
 {
-    public string Description;
+    public string Description { get; set; }
     public int Weight { get; set; }
     private List<int> dimensions;
 
